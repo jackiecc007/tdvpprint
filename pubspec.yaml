@@ -1,0 +1,37 @@
+name: tdvpprint
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/logo.png
+    - assets/images/singthong.jpg
+
+  fonts:
+    - family: THSarabunNew
+      fonts:
+        - asset: assets/fonts/THSarabunNew.ttf
+        - asset: assets/fonts/THSarabunNew Bold.ttf
+        - asset: assets/fonts/THSarabunNew BoldItalic.ttf
+        - asset: assets/fonts/THSarabunNew Italic.ttf
+
+    - family: Charmonman
+      fonts:
+        - asset: assets/fonts/Charmonman-Bold.ttf
+        - asset: assets/fonts/Charmonman-Regular.ttf
