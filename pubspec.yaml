@@ -11,6 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  google_sign_in: ^4.5.5
+  http: ^0.12.2
+  firebase_auth: ^0.18.1+2
+  firebase_core: ^0.5.0+1
+  firebase_database: ^4.1.1
+  shared_preferences: ^2.0.5
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +29,7 @@ flutter:
     - assets/images/
     - assets/images/logo.png
     - assets/images/singthong.jpg
+    - assets/images/bg0001.png
 
   fonts:
     - family: THSarabunNew
