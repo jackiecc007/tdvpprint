@@ -3,9 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tdvpprint/regpage.dart';
+
+import 'package:tdvpprint/pages/general/regpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'customer_service.dart';
+import 'package:tdvpprint/pages/customer/customer_service.dart';
+
+//import 'registerpage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -32,8 +35,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
+                      image: AssetImage("assets/images/p21.jpg"),
                       //image: AssetImage("assets/images/bg0001.png"),
-                      image: AssetImage("assets/images/singthong.jpg"),
+                      //image: AssetImage("assets/images/pro001.jpg"),
+                      //image: AssetImage("assets/images/b15.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -42,56 +47,31 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     child: Card(
                       margin: EdgeInsets.only(
-                          top: 100, left: 20, right: 20, bottom: 60),
+                          top: 75, left: 10, right: 10, bottom: 70),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      elevation: 4,
+                          borderRadius: BorderRadius.circular(16)),
+                      elevation: 5,
                       color: Colors.black54,
+                      //color: Colors.grey[900],
                       child: Column(
                         children: <Widget>[
-                          //SizedBox(height: 30),
-                          //_headerTDVP(),
                           SizedBox(height: 30),
-                          _logo(),
-                          SizedBox(height: 10),
+                          //_logo(),
+                          _headerTDVP(),
+                          SizedBox(height: 20),
+                          //_headerlogin(),
+                          _headerpath(),
+                          //SizedBox(height: 10),
                           _blockEmail(),
                           _blockPassword(),
                           _blocklogin(),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
                           _regpath(),
                           _mailButton(),
-                          _generalButton(),
-                          
-                          /*
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Center(
-                              child: Row(
-                                children: <Widget>[
-                                  _buttonregister(),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  _buttongeneral(),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Row(
-                              children: <Widget>[
-                                _buttonregister(),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                _buttongeneral(),
-                              ],
-                            ),
-                          ),
-                          */
-
+                          //_generalButton(),
+                          //_adminButton(),
                         ],
                       ),
                     ),
@@ -214,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
           )),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.pinkAccent[400])),
-          hintText: "ittdvp@tdvpprint.com",
+          hintText: "  ittdvp@tdvpprint.com",
           hintStyle: TextStyle(
             color: Colors.white,
           ),
@@ -254,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
           )),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.pinkAccent[400])),
-          hintText: "XXXXXX",
+          hintText: "  XXXXXX",
           hintStyle: TextStyle(
             color: Colors.white,
           ),
@@ -277,7 +257,8 @@ class _LoginPageState extends State<LoginPage> {
       child: isLoading
           ? CircularProgressIndicator()
           : RaisedButton(
-              color: const Color(0xfffbb448),
+              //color: const Color(0xfffbb448),
+              color: const Color(0xff0e254e),
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                   setState(() {
@@ -332,62 +313,49 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  Widget _buttonlogin() {
-    return RaisedButton(
-      padding: const EdgeInsets.all(10),
-      textColor: Colors.white,
-      color: Colors.green,
-      onPressed: () {},
-      child: Text(
-        'Login',
-        style: TextStyle(
-          fontFamily: 'TH Sarabun New',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: const Color(0xFFFFFFFF),
-        ),
+  Widget _headerpath() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(
+                thickness: 2,
+                color: const Color(0xfff1f8ff),
+              ),
+            ),
+          ),
+          Text(
+            'เข้าสู่ระบบ',
+            style: TextStyle(
+              fontFamily: 'THSarabunNew',
+              fontSize: 28,
+              //color: const Color(0xff0e254e),
+              color: const Color(0xffffffff),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(
+                thickness: 2,
+                color: const Color(0xfff1f8ff),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buttonregister() {
-    return RaisedButton(
-      padding: const EdgeInsets.all(10),
-      textColor: Colors.white,
-      color: Colors.green,
-      onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => RegisterPage()));
-      },
-      child: Text(
-        'สมัครสมาชิก',
-        style: TextStyle(
-          fontFamily: 'THSarabunNew',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: const Color(0xFFFFFFFF),
-        ),
-      ),
-    );
-  }
-
-  Widget _buttongeneral() {
-    return RaisedButton(
-      padding: const EdgeInsets.all(10),
-      textColor: Colors.white,
-      color: Colors.green,
-      onPressed: () {},
-      child: Text(
-        'บุคคลทั่วไป',
-        style: TextStyle(
-          fontFamily: 'THSarabunNew',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: const Color(0xFFFFFFFF),
-        ),
-      ),
-    );
-  }
 
   Widget _regpath() {
     return Container(
@@ -438,7 +406,7 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => RegisterPage()));
       },
-      child : Container(
+      child: Container(
         padding: const EdgeInsets.all(10),
         height: 50,
         //margin: EdgeInsets.symmetric(vertical: 20),
@@ -474,7 +442,8 @@ class _LoginPageState extends State<LoginPage> {
                       topRight: Radius.circular(5)),
                 ),
                 alignment: Alignment.center,
-                child: Text('สมัครสมาชิกด้วยบัญชี Email',
+                child: Text(
+                  'สมัครสมาชิกด้วยบัญชี Email',
                   style: TextStyle(
                     fontFamily: 'THSarabunNew',
                     fontSize: 26,
@@ -495,7 +464,67 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => RegisterPage()));
       },
-      child : Container(
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        height: 50,
+        //margin: EdgeInsets.symmetric(vertical: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFF00C721),
+                  //color: Color(0xFF0A005F),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(5),
+                      topLeft: Radius.circular(5)),
+                ),
+                alignment: Alignment.center,
+                child: new Icon(
+                  Icons.person_sharp,
+                  color: Colors.white,
+                  size: 20.0,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFF52C766),
+                  //color: Color(0xFF4F3BFF),
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(5),
+                      topRight: Radius.circular(5)),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  'ผู้ใช้งานทั่วไป',
+                  style: TextStyle(
+                    fontFamily: 'THSarabunNew',
+                    fontSize: 26,
+                    color: const Color(0xfff1f8ff),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _adminButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => RegisterPage()));
+      },
+      child: Container(
         padding: const EdgeInsets.all(10),
         height: 50,
         //margin: EdgeInsets.symmetric(vertical: 20),
@@ -516,7 +545,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 alignment: Alignment.center,
                 child: new Icon(
-                  Icons.person_sharp,
+                  Icons.lock_rounded,
                   color: Colors.white,
                   size: 20.0,
                 ),
@@ -533,7 +562,8 @@ class _LoginPageState extends State<LoginPage> {
                       topRight: Radius.circular(5)),
                 ),
                 alignment: Alignment.center,
-                child: Text('ผู้ใช้งานทั่วไป',
+                child: Text(
+                  'ผู้ดูแลระบบ',
                   style: TextStyle(
                     fontFamily: 'THSarabunNew',
                     fontSize: 26,
@@ -547,5 +577,40 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+
+    Widget _backButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              child: Icon(
+                Icons.keyboard_arrow_left,
+                color: const Color(0xffffc52e),
+              ),
+            ),
+            Text(
+              'Back',
+              style: TextStyle(
+                fontFamily: 'THSarabunNew',
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xffffc52e),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
 
 }

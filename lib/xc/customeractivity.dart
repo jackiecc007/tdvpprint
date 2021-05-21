@@ -3,19 +3,18 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'regpage.dart';
-import 'customer_service.dart';
+import '../pages/general/regpage.dart';
+import '../pages/customer/customer_service.dart';
 import 'customerorders.dart';
 import 'customeractivity.dart';
 import 'customerprinting.dart';
 import 'customertransport.dart';
 import 'customerdata.dart';
-import 'loginpage.dart';
+import '../pages/general/loginpage.dart';
 
 
-
-class CustomerOrdersPage extends StatelessWidget {
-  CustomerOrdersPage({this.uid});
+class CustomerActivityPage extends StatelessWidget {
+  CustomerActivityPage({this.uid});
   final String uid;
   final String title = "CUSTOMER SERVICE CENTER";
 
@@ -69,7 +68,7 @@ class CustomerOrdersPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "สั่งซื้อ/สั่งพิมพ์แบบพิมพ์",
+                      "ประวัติการสั่งซื้อ/สั่งพิมพ์",
                       style: TextStyle(
                         fontFamily: 'TH Sarabun New',
                         fontSize: 20,

@@ -3,14 +3,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../regpage.dart';
-import '../../customer_service.dart';
+import 'package:tdvpprint/pages/general/regpage.dart';
+import '../customer/customer_service.dart';
 import '../customer/customer_jobtracking.dart';
 import '../customer/customer_orderhistory.dart';
 import '../customer/customer_profile.dart';
 import '../customer/customer_publishing.dart';
 import '../customer/customer_transportation.dart';
-import '../../loginpage.dart';
+import 'package:tdvpprint/pages/general/loginpage.dart';
 
 
 class CustomerOrderHistoryPage extends StatelessWidget {
@@ -34,7 +34,7 @@ class CustomerOrderHistoryPage extends StatelessWidget {
                 auth.signOut().then((res) {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                      MaterialPageRoute(builder: (context) => LoginPage()),
                           (Route<dynamic> route) => false);
                 });
               },
@@ -111,40 +111,60 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountEmail: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.value['email']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
-            accountName: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.value['flname']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: <Color> [
-                Color(0xff002040),
-                Color(0xff004080),
-              ]
+              accountName: FutureBuilder(
+                  future: FirebaseDatabase.instance
+                      .reference()
+                      .child("Users")
+                      .child(widget.uid)
+                      .once(),
+                  builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                        snapshot.data.value['fname'],
+                        style: TextStyle(
+                          fontFamily: 'THSarabunNew',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          //color: const Color(0xFF000120),
+                          color: const Color(0xFFFFFFFF),
+                        ),
+                      );
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  }),
+
+              accountEmail: FutureBuilder(
+                  future: FirebaseDatabase.instance
+                      .reference()
+                      .child("Users")
+                      .child(widget.uid)
+                      .once(),
+                  builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                        snapshot.data.value['email'],
+                        style: TextStyle(
+                          fontFamily: 'THSarabunNew',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          //color: const Color(0xFF000120),
+                          color: const Color(0xFFFFFFFF),
+                        ),
+                      );
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  }),
+
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/pro001.jpg"),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
+
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.home, color: Colors.black),

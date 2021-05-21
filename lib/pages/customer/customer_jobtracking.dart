@@ -2,15 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../regpage.dart';
-import '../../customer_service.dart';
+import 'package:tdvpprint/pages/general/regpage.dart';
+import '../customer/customer_service.dart';
 import '../customer/customer_jobtracking.dart';
 import '../customer/customer_orderhistory.dart';
 import '../customer/customer_profile.dart';
 import '../customer/customer_publishing.dart';
 import '../customer/customer_transportation.dart';
-import '../../loginpage.dart';
+import 'package:tdvpprint/pages/general/loginpage.dart';
 
 class CustomerJobTrackingPage extends StatelessWidget {
   CustomerJobTrackingPage({this.uid});
@@ -115,7 +114,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
+           UserAccountsDrawerHeader(
             accountEmail: FutureBuilder(
                 future: FirebaseDatabase.instance
                     .reference()
@@ -143,12 +142,13 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   }
                 }),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: <Color>[
-                Color(0xff002040),
-                Color(0xff004080),
-              ]),
-            ),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/pro001.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
           ),
+          
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.home, color: Colors.black),

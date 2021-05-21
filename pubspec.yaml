@@ -13,11 +13,43 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_sign_in: ^4.5.5
   http: ^0.12.2
+  # connect firebase
   firebase_auth: ^0.18.1+2
   firebase_core: ^0.5.0+1
   firebase_database: ^4.1.1
+  cloud_firestore: ^0.14.2
+  firebase_messaging: ^7.0.3
   shared_preferences: ^2.0.5
+  #use in the projects
+  google_fonts: ^1.1.0
+  flutter_icons: ^1.1.0
   carousel_pro: ^1.0.0
+  flutter_svg: ^0.22.0
+  google_maps_flutter: ^0.5.32
+  permission_handler: ^5.0.1+1
+  location: ^3.1.0
+  font_awesome_flutter: ^8.8.1
+  flutter_calendar_carousel: ^1.4.12
+  flutter_rounded_date_picker: ^1.0.5
+  url_launcher: ^5.7.0
+  flutter_auth_buttons: ^0.10.0
+  flutter_dialogflow: ^0.1.3
+  bubble: ^1.1.9+1
+  buddhist_datetime_dateformat: ^1.0.6
+  table_calendar: ^2.3.1
+  dio: ^3.0.10
+  image_picker: ^0.6.7+21
+  image_cropper: ^1.3.1
+  sqflite: ^1.3.1
+  toast: ^0.1.5
+  steps_indicator: ^1.0.1
+  flushbar: ^1.10.4
+  badges: ^1.1.6
+  sweetalert: ^0.0.1
+  flutter_money_formatter: ^0.8.3
+
+dependency_overrides:
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -26,10 +58,161 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/
     - assets/images/logo.png
-    - assets/images/singthong.jpg
+    - assets/images/tdvpbuilding.jpg
     - assets/images/bg0001.png
+    - assets/images/gen.jpg
+    - assets/images/bg3.jpg
+    - assets/images/bg5.jpg
+    - assets/images/pro001.jpg
+    - assets/images/pro901.jpg
+    - assets/images/oc101.png
+    - assets/images/oc102.png
+    - assets/images/oc103.png
+    - assets/images/oc104.png
+    - assets/images/oc105.jpg
+    - assets/images/bg0002.jpg
+    - assets/images/a1.jpg
+    - assets/images/a2.jpg
+    - assets/images/a3.jpg
+    - assets/images/d1.jpg
+    - assets/images/d2.jpg
+    - assets/images/d3.jpg
+    - assets/images/account_circle.svg
+    - assets/images/chevron-sign-left.svg
+    - assets/images/001.png
+    - assets/images/002.png
+    - assets/images/003.png
+    - assets/images/004.png
+    - assets/images/005.png
+    - assets/images/006.png
+    - assets/images/007.png
+    - assets/images/008.png
+    - assets/images/009.png
+    - assets/images/0010.png
+    - assets/images/man.png
+    - assets/images/chatbot.png
+    - assets/images/contact.png
+    - assets/images/bg7.jpg
+    - assets/images/bg4.jpg
+    - assets/images/bg8.jpg
+    - assets/images/picmap1.jpg
+    - assets/images/singthong.jpg
+    - assets/images/c10.jpg
+    - assets/images/c9.jpg
+    - assets/images/c8-1.jpg
+    - assets/images/c8-2.jpg
+    - assets/images/c8-3.jpg
+    - assets/images/c8-4.jpg
+    - assets/images/bg.png
+    - assets/images/logo2.jpg
+    - assets/images/structure‎.jpg
+    - assets/images/logo3.png
+    - assets/images/oss.jpg
+    - assets/images/bg20.jpg
+    - assets/images/bg30.jpg
+    - assets/images/bg101.jpg
+    - assets/images/bg102.jpg
+    - assets/images/bg103.jpg
+    - assets/images/bg104.jpg
+    - assets/images/bg105.jpg
+    - assets/images/bg106.jpg
+    - assets/images/bg201.jpg
+    - assets/images/bg202.jpg
+    - assets/images/bg203.jpg
+    - assets/images/bg204.jpg
+    - assets/images/bg205.jpg
+    - assets/images/bg200.jpg
+    - assets/images/pin1.png
+    - assets/images/tdvpprinting20.png
+    - assets/images/p21.jpg
+    - assets/images/p22.jpg
+    - assets/images/p1.jpg
+    - assets/images/p2.jpg
+    - assets/images/p3.jpg
+    - assets/images/p4.jpg
+    - assets/images/p5.jpg
+    - assets/images/p6.jpg
+    - assets/images/p7.jpg
+    - assets/images/p8.jpg
+    - assets/images/p9.jpg
+    - assets/images/p10.jpg
+    - assets/images/p11.jpg
+    - assets/images/p12.jpg
+    - assets/images/p13.jpg
+    - assets/images/p14.jpg
+    - assets/images/p15.jpg
+    - assets/images/p16.jpg
+    - assets/images/p17.jpg
+    - assets/images/p18.jpg
+    - assets/images/p19.jpg
+    - assets/images/p20.jpg
+    - assets/images/b1.png
+    - assets/images/b2.jpg
+    - assets/images/b3.jpg
+    - assets/images/b11.jpg
+    - assets/images/b12.jpg
+    - assets/images/b13.jpg
+    - assets/images/b14.jpg
+    - assets/images/b15.jpg
+    - assets/images/b16.jpg
+    - assets/price-63.pdf
+    - assets/images/chatbot1.png
+    - assets/images/master.png
+    - assets/images/bg400.jpg
+    - assets/images/bg500.jpg
+    - assets/images/bg800.jpg
+    - assets/images/bg801.jpg
+    - assets/images/bg802.jpg
+    - assets/images/bg803.jpg
+    - assets/images/bg804.jpg
+    - assets/images/bg805.jpg
+    - assets/images/bg806.jpg
+    - assets/images/bg807.jpg
+    - assets/images/bg808.jpg
+    - assets/images/bg809.jpg
+    - assets/images/bg810.jpg
+    - assets/images/bg811.jpg
+    - assets/images/bg812.jpg
+    - assets/images/bg813.jpg
+    - assets/images/bg814.jpg
+    - assets/images/bg815.jpg
+    - assets/images/bg816.jpg
+    - assets/images/bg817.jpg
+    - assets/images/bg818.jpg
+    - assets/images/bg819.jpg
+    - assets/images/bg820.png
+    - assets/images/bg900.jpg
+    - assets/images/bg901.jpg
+    - assets/images/bg902.jpg
+    - assets/images/bg821.jpg
+    - assets/images/bg850.jpg
+    - assets/images/bg851.jpg
+    - assets/images/bg852.jpg
+    - assets/images/bg853.jpg
+    - assets/images/bg854.jpg
+    - assets/images/bg855.jpg
+    - assets/images/bg856.jpg
+    - assets/images/bg600.jpg
+    - assets/images/bg650.jpg
+    - assets/images/bg651.jpg
+    - assets/images/bg652.jpg
+    - assets/images/bg950.jpg
+    - assets/images/bg951.jpg
+    - assets/images/bg952.jpg
+    - assets/images/cc100.jpeg
+    - assets/images/cc101.jpg
+    - assets/images/cc102.jpg
+    - assets/images/ca100.jpg
+    - assets/images/ck100.png
+    - assets/images/cr10.png
+    - assets/images/cr9.png
+    - assets/images/cr801.png
+    - assets/images/cr802.png
+    - assets/images/cr803.png
+    - assets/images/cr804.png
+    - assets/images/cr805.png
 
   fonts:
     - family: THSarabunNew

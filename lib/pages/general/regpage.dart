@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:tdvpprint/customer_service.dart';
-import 'package:tdvpprint/loginpage.dart';
+import 'package:tdvpprint/pages/customer/customer_service.dart';
+import 'package:tdvpprint/pages/general/loginpage.dart';
 
 
 class RegisterPage extends StatefulWidget {

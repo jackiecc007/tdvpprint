@@ -2,16 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../regpage.dart';
-import '../../customer_service.dart';
+import 'package:tdvpprint/pages/general/regpage.dart';
+import '../customer/customer_service.dart';
 import '../customer/customer_jobtracking.dart';
 import '../customer/customer_orderhistory.dart';
 import '../customer/customer_profile.dart';
 import '../customer/customer_publishing.dart';
 import '../customer/customer_transportation.dart';
-import '../../loginpage.dart';
-
+import 'package:tdvpprint/pages/general/loginpage.dart';
 
 
 class CustomerTransportationPage extends StatelessWidget {
@@ -35,7 +33,7 @@ class CustomerTransportationPage extends StatelessWidget {
                 auth.signOut().then((res) {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                      MaterialPageRoute(builder: (context) => LoginPage()),
                           (Route<dynamic> route) => false);
                 });
               },
@@ -90,49 +88,6 @@ class CustomerTransportationPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20,),
-              /*
-              new Container(
-                child: Column(
-                  children: <Widget>[
-                    InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Home() ));
-                      },
-                      child : Card(
-                        shape:RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)
-                        ),
-                        elevation: 4,
-                        color: const Color(0xffb3e5fc),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.asset(
-                              'assets/images/002.png',
-                              height: 75,
-                            ),
-                            SizedBox(width: 20,),
-                            Text(
-                              'แบบสิ่งพิมพ์',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'TH Sarabun New',
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xff04066b),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-              ),
-
-               */
-
             ],
           ),
         ),
@@ -182,13 +137,13 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   }
                 }),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: <Color> [
-                Color(0xff002040),
-                Color(0xff004080),
-              ]
+                image: DecorationImage(
+                  image: AssetImage("assets/images/pro001.jpg"),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
           ),
+          
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.home, color: Colors.black),

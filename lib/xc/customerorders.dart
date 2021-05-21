@@ -1,57 +1,26 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:carousel_pro/carousel_pro.dart';
-import 'package:tdvpprint/regpage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-import 'customeractivity.dart';
-import 'customerdata.dart';
+import '../pages/general/regpage.dart';
+import '../pages/customer/customer_service.dart';
 import 'customerorders.dart';
+import 'customeractivity.dart';
 import 'customerprinting.dart';
 import 'customertransport.dart';
-import 'loginpage.dart';
-
-/*
-class CustomerServicePage extends StatefulWidget {
-  CustomerServicePage({this.uid});
-  final String uid;
-  final String title = "CUSTOMER SERVICE CENTER";
-
-  @override
-  _CustomerServicePageState createState() => _CustomerServicePageState();
-}
-
-class _CustomerServicePageState extends State<CustomerServicePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      
-    );
-  }
-}
-*/
-
-//////////
-///
-///
+import 'customerdata.dart';
+import '../pages/general/loginpage.dart';
 
 
-class CustomerServicePage extends StatelessWidget {
-  CustomerServicePage({this.uid});
+
+class CustomerOrdersPage extends StatelessWidget {
+  CustomerOrdersPage({this.uid});
   final String uid;
   final String title = "CUSTOMER SERVICE CENTER";
 
   @override
   Widget build(BuildContext context) {
-    Widget imageSliderCarousel = Container(
-      height: 200,
-      child: Carousel(
-        boxFit: BoxFit.fill,
-        images: [
-          AssetImage('assets/images/oc101.png'),
-        ],
-      ),
-    );
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
@@ -83,7 +52,6 @@ class CustomerServicePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              imageSliderCarousel, //Slide image
               SizedBox(height: 30,),
               Container(
                 child: Row(
@@ -101,9 +69,9 @@ class CustomerServicePage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "ยินดีต้อนรับเข้าสู่ระบบ",
+                      "สั่งซื้อ/สั่งพิมพ์แบบพิมพ์",
                       style: TextStyle(
-                        fontFamily: 'THSarabunNew',
+                        fontFamily: 'TH Sarabun New',
                         fontSize: 20,
                         color: const Color(0xFFFFFFFF),
                       ),
@@ -122,6 +90,49 @@ class CustomerServicePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20,),
+              /*
+              new Container(
+                child: Column(
+                  children: <Widget>[
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Home() ));
+                      },
+                      child : Card(
+                        shape:RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)
+                        ),
+                        elevation: 4,
+                        color: const Color(0xffb3e5fc),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset(
+                              'assets/images/002.png',
+                              height: 75,
+                            ),
+                            SizedBox(width: 20,),
+                            Text(
+                              'แบบสิ่งพิมพ์',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'TH Sarabun New',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xff04066b),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+              ),
+
+               */
+
             ],
           ),
         ),
@@ -234,8 +245,6 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               );
             },
           ),
-
-          //Tracking (การติดตามงาน)
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.invert_colors_on_outlined, color: Colors.black),
@@ -286,8 +295,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginPage(),
-                ),
+                MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
           ),

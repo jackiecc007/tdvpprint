@@ -3,26 +3,23 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../regpage.dart';
-import '../../customer_service.dart';
+import 'package:tdvpprint/pages/general/regpage.dart';
+import '../customer/customer_service.dart';
 import '../customer/customer_jobtracking.dart';
 import '../customer/customer_orderhistory.dart';
 import '../customer/customer_profile.dart';
 import '../customer/customer_publishing.dart';
 import '../customer/customer_transportation.dart';
-import '../../loginpage.dart';
-
+import 'package:tdvpprint/pages/general/loginpage.dart';
 
 class CustomerProfilePage extends StatelessWidget {
   CustomerProfilePage({this.uid});
   final String uid;
-  final String title = "CUSTOMER SERVICE CENTER";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
           actions: <Widget>[
             IconButton(
               icon: Icon(
@@ -34,8 +31,8 @@ class CustomerProfilePage extends StatelessWidget {
                 auth.signOut().then((res) {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
-                          (Route<dynamic> route) => false);
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      (Route<dynamic> route) => false);
                 });
               },
             )
@@ -51,7 +48,9 @@ class CustomerProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 child: Row(
                   children: <Widget>[
@@ -84,11 +83,15 @@ class CustomerProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               /*
               new Container(
                 child: Column(
@@ -131,7 +134,6 @@ class CustomerProfilePage extends StatelessWidget {
               ),
 
                */
-
             ],
           ),
         ),
@@ -154,37 +156,97 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountEmail: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.value['email']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
-            accountName: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.value['flname']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
+            currentAccountPicture: Row(
+              children: [
+                CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: AssetImage("assets/images/gen.jpg"),
+                  backgroundColor: Colors.blueGrey,
+                ),
+              ],
+            ),
+            accountName: Row(
+              children: [
+                Text(
+                  'คุณ',
+                  style: TextStyle(
+                    fontFamily: 'THSarabunNew',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    //color: const Color(0xFF000120),
+                    color: const Color(0xFFFFFFFF),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                FutureBuilder(
+                    future: FirebaseDatabase.instance
+                        .reference()
+                        .child("Users")
+                        .child(widget.uid)
+                        .once(),
+                    builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(
+                          snapshot.data.value['fname'],
+                          style: TextStyle(
+                            fontFamily: 'THSarabunNew',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            //color: const Color(0xFF000120),
+                            color: const Color(0xFFFFFFFF),
+                          ),
+                        );
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                    }),
+              ],
+            ),
+            accountEmail: Row(
+              children: [
+                Text(
+                  'อีเมล์',
+                  style: TextStyle(
+                    fontFamily: 'THSarabunNew',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    //color: const Color(0xFF000120),
+                    color: const Color(0xFFFFFFFF),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                FutureBuilder(
+                    future: FirebaseDatabase.instance
+                        .reference()
+                        .child("Users")
+                        .child(widget.uid)
+                        .once(),
+                    builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(
+                          snapshot.data.value['email'],
+                          style: TextStyle(
+                            fontFamily: 'THSarabunNew',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            //color: const Color(0xFF000120),
+                            color: const Color(0xFFFFFFFF),
+                          ),
+                        );
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                    }),
+              ],
+            ),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: <Color> [
-                Color(0xff002040),
-                Color(0xff004080),
-              ]
+              image: DecorationImage(
+                image: AssetImage("assets/images/pro901.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -198,7 +260,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerServicePage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) => CustomerServicePage(uid: widget.uid)),
               );
             },
           ),
@@ -212,7 +275,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerProfilePage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) => CustomerProfilePage(uid: widget.uid)),
               );
             },
           ),
@@ -226,7 +290,9 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerPublishingPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerPublishingPage(uid: widget.uid)),
               );
             },
           ),
@@ -240,13 +306,16 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerOrderHistoryPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerOrderHistoryPage(uid: widget.uid)),
               );
             },
           ),
           ListTile(
             leading: new IconButton(
-              icon: new Icon(Icons.invert_colors_on_outlined, color: Colors.black),
+              icon: new Icon(Icons.invert_colors_on_outlined,
+                  color: Colors.black),
               onPressed: () => null,
             ),
             title: Text('ติดตามงานพิมพ์'),
@@ -254,7 +323,9 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerJobTrackingPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerJobTrackingPage(uid: widget.uid)),
               );
             },
           ),
@@ -268,11 +339,15 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerTransportationPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerTransportationPage(uid: widget.uid)),
               );
             },
           ),
-          new Divider(color: Colors.black,),
+          new Divider(
+            color: Colors.black,
+          ),
           ListTile(
             leading: new IconButton(
               icon: new Icon(
@@ -285,7 +360,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => LoginPage()),
-                          (Route<dynamic> route) => false);
+                      (Route<dynamic> route) => false);
                 });
               },
             ),

@@ -2,17 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../regpage.dart';
-import '../../customer_service.dart';
+import 'package:tdvpprint/pages/general/regpage.dart';
+import '../customer/customer_service.dart';
 import '../customer/customer_jobtracking.dart';
 import '../customer/customer_orderhistory.dart';
 import '../customer/customer_profile.dart';
 import '../customer/customer_publishing.dart';
 import '../customer/customer_transportation.dart';
-import '../../loginpage.dart';
-
-
+import 'package:tdvpprint/pages/general/loginpage.dart';
 
 class CustomerPublishingPage extends StatelessWidget {
   CustomerPublishingPage({this.uid});
@@ -35,8 +32,8 @@ class CustomerPublishingPage extends StatelessWidget {
                 auth.signOut().then((res) {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
-                          (Route<dynamic> route) => false);
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      (Route<dynamic> route) => false);
                 });
               },
             )
@@ -52,7 +49,9 @@ class CustomerPublishingPage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 child: Row(
                   children: <Widget>[
@@ -85,11 +84,15 @@ class CustomerPublishingPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               /*
               new Container(
                 child: Column(
@@ -132,7 +135,6 @@ class CustomerPublishingPage extends StatelessWidget {
               ),
 
                */
-
             ],
           ),
         ),
@@ -146,7 +148,6 @@ class NavigateDrawer extends StatefulWidget {
   @override
   _NavigateDrawerState createState() => _NavigateDrawerState();
 }
-
 
 class _NavigateDrawerState extends State<NavigateDrawer> {
   @override
@@ -183,10 +184,9 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   }
                 }),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: <Color> [
-                Color(0xff002040),
-                Color(0xff004080),
-              ]
+              image: DecorationImage(
+                image: AssetImage("assets/images/pro001.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -200,7 +200,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerServicePage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) => CustomerServicePage(uid: widget.uid)),
               );
             },
           ),
@@ -214,7 +215,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerProfilePage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) => CustomerProfilePage(uid: widget.uid)),
               );
             },
           ),
@@ -228,7 +230,9 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerPublishingPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerPublishingPage(uid: widget.uid)),
               );
             },
           ),
@@ -242,13 +246,16 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerOrderHistoryPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerOrderHistoryPage(uid: widget.uid)),
               );
             },
           ),
           ListTile(
             leading: new IconButton(
-              icon: new Icon(Icons.invert_colors_on_outlined, color: Colors.black),
+              icon: new Icon(Icons.invert_colors_on_outlined,
+                  color: Colors.black),
               onPressed: () => null,
             ),
             title: Text('ติดตามงานพิมพ์'),
@@ -256,7 +263,9 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerJobTrackingPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerJobTrackingPage(uid: widget.uid)),
               );
             },
           ),
@@ -270,11 +279,15 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerTransportationPage(uid: widget.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CustomerTransportationPage(uid: widget.uid)),
               );
             },
           ),
-          new Divider(color: Colors.black,),
+          new Divider(
+            color: Colors.black,
+          ),
           ListTile(
             leading: new IconButton(
               icon: new Icon(
@@ -287,7 +300,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => LoginPage()),
-                          (Route<dynamic> route) => false);
+                      (Route<dynamic> route) => false);
                 });
               },
             ),

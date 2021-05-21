@@ -3,19 +3,18 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'regpage.dart';
-import 'customer_service.dart';
+import '../pages/general/regpage.dart';
+import '../pages/customer/customer_service.dart';
 import 'customerorders.dart';
 import 'customeractivity.dart';
 import 'customerprinting.dart';
 import 'customertransport.dart';
 import 'customerdata.dart';
-import 'loginpage.dart';
+import '../pages/general/loginpage.dart';
 
 
-
-class CustomerTransportPage extends StatelessWidget {
-  CustomerTransportPage({this.uid});
+class CustomerPrintingPage extends StatelessWidget {
+  CustomerPrintingPage({this.uid});
   final String uid;
   final String title = "CUSTOMER SERVICE CENTER";
 
@@ -69,7 +68,7 @@ class CustomerTransportPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "ติดตามการจัดส่ง",
+                      "ติดตามงานพิมพ์",
                       style: TextStyle(
                         fontFamily: 'TH Sarabun New',
                         fontSize: 20,
@@ -199,7 +198,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               print(widget.uid);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CustomerServicePage(uid: widget.uid)),
+                MaterialPageRoute(builder: (context) => CustomerActivityPage(uid: widget.uid)),
               );
             },
           ),
