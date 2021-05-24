@@ -122,114 +122,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[         
+        children: <Widget>[
           UserAccountsDrawerHeader(
-              //avatar
-              /*
-              currentAccountPicture: GestureDetector(
-                onTap: () {
-                  print('profile picture');
-                },
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/images/p21.jpg"),
-                  backgroundColor: Colors.blueGrey,
-                ),
-              ),
-
-               */
-              accountName: FutureBuilder(
-                  future: FirebaseDatabase.instance
-                      .reference()
-                      .child("Users")
-                      .child(widget.uid)
-                      .once(),
-                  builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(
-                        snapshot.data.value['fname'],
-                        style: TextStyle(
-                          fontFamily: 'THSarabunNew',
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          //color: const Color(0xFF000120),
-                          color: const Color(0xFFFFFFFF),
-                        ),
-                      );
-                    } else {
-                      return CircularProgressIndicator();
-                    }
-                  }),
-
-              accountEmail: FutureBuilder(
-                  future: FirebaseDatabase.instance
-                      .reference()
-                      .child("Users")
-                      .child(widget.uid)
-                      .once(),
-                  builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(
-                        snapshot.data.value['email'],
-                        style: TextStyle(
-                          fontFamily: 'THSarabunNew',
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          //color: const Color(0xFF000120),
-                          color: const Color(0xFFFFFFFF),
-                        ),
-                      );
-                    } else {
-                      return CircularProgressIndicator();
-                    }
-                  }),
-
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/pro001.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-
-          /*
-
-          UserAccountsDrawerHeader(
-
-            // firestore error loading
-            /*
-            accountEmail: FutureBuilder(
-              future: FirebaseFirestore.instance
-                  .collection('Users')
-                  .doc(widget.uid)
-                  .get()
-                  .then((DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists) {
-                  print('Document exists on the database');
-                }
-              }),
-              builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data.value['Email']);
-                } else {
-                  return CircularProgressIndicator();
-                }
-              },
-            ),
-            */
-
-            accountEmail: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.value['email']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
             accountName: FutureBuilder(
                 future: FirebaseDatabase.instance
                     .reference()
@@ -238,20 +132,49 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                     .once(),
                 builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
                   if (snapshot.hasData) {
-                    return Text(snapshot.data.value['fname']);
+                    return Text(
+                      snapshot.data.value['fname'],
+                      style: TextStyle(
+                        fontFamily: 'THSarabunNew',
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        //color: const Color(0xFF000120),
+                        color: const Color(0xFFFFFFFF),
+                      ),
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                }),
+            accountEmail: FutureBuilder(
+                future: FirebaseDatabase.instance
+                    .reference()
+                    .child("Users")
+                    .child(widget.uid)
+                    .once(),
+                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(
+                      snapshot.data.value['email'],
+                      style: TextStyle(
+                        fontFamily: 'THSarabunNew',
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        //color: const Color(0xFF000120),
+                        color: const Color(0xFFFFFFFF),
+                      ),
+                    );
                   } else {
                     return CircularProgressIndicator();
                   }
                 }),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/bg816.jpg"),
+                image: AssetImage("assets/images/pro001.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          
-          */
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.home, color: Colors.black),
@@ -293,7 +216,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => CustomerPublishingPage(uid: widget.uid)),
+                    builder: (context) =>
+                        CustomerPublishingPage(uid: widget.uid)),
               );
             },
           ),
